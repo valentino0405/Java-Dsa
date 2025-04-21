@@ -32,11 +32,11 @@ public class Dijkstra {
 
         PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[1] - b[1]);
         distances[src] = 0;
-        pq.add(new int[]{src, 0});
+        pq.add(new int[]{src, 0});//didnt understand
 
         int step = 1;
         while (!pq.isEmpty()) {
-            int[] current = pq.poll();
+            int[] current = pq.poll();//gets highest priority element
             int curNode = current[0];
             int curDist = current[1];
 
