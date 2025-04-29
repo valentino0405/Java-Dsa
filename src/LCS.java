@@ -10,14 +10,14 @@ public class LCS {
             for (int j = 0; j <= m; j++) {
                 if (i == 0 || j == 0) {
                     dp[i][j] = 0;
-                    b[i][j] = ' '; // No direction for the first row/column
-                } else if (x.charAt(i - 1) == y.charAt(j - 1)) { // Match case
+                    b[i][j] = ' ';
+                } else if (x.charAt(i - 1) == y.charAt(j - 1)) {
                     dp[i][j] = dp[i - 1][j - 1] + 1;
-                    b[i][j] = '↖'; // Diagonal move
-                } else if (dp[i - 1][j] > dp[i][j - 1]) { // Up move
+                    b[i][j] = '↖';
+                } else if (dp[i - 1][j] > dp[i][j - 1]) {
                     dp[i][j] = dp[i - 1][j];
                     b[i][j] = '↑';
-                } else { // Left move
+                } else {
                     dp[i][j] = dp[i][j - 1];
                     b[i][j] = '←';
                 }

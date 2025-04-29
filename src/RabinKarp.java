@@ -8,11 +8,11 @@ public class RabinKarp {
         int p = 0, t = 0, spuriousHits = 0;
         boolean found = false;
 
-        // Calculate h = d^(m-1) % q
+
         for (int i = 0; i < m - 1; i++)
             h = (h * d) % q;
 
-        // Calculate initial hash values
+
         for (int i = 0; i < m; i++) {
             p = (d * p + P.charAt(i)) % q;
             t = (d * t + T.charAt(i)) % q;
@@ -20,11 +20,11 @@ public class RabinKarp {
 
         System.out.println("\nSearching for pattern \"" + P + "\" in text \"" + T + "\"");
 
-        // Slide the pattern over text one by one
+
         for (int s = 0; s <= n - m; s++) {
             if (p == t) {
                 boolean match = true;
-                // Check character by character
+
                 for (int i = 0; i < m; i++) {
                     if (T.charAt(s + i) != P.charAt(i)) {
                         match = false;
@@ -39,7 +39,7 @@ public class RabinKarp {
                 }
             }
 
-            // Calculate hash value for next window of text
+
             if (s < n - m) {
                 t = (d * (t - T.charAt(s) * h) + T.charAt(s + m)) % q;
                 if (t < 0)

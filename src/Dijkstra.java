@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Dijkstra {
 
-    // Method to print distances and parent table
+
     public void printTables(int[] distances, int[] parent, int v) {
         // Print header row
         System.out.print("\nIndex \t\t");
@@ -23,20 +23,20 @@ public class Dijkstra {
         System.out.println();
     }
 
-    // Method for calculating shortest paths
+
     public void shortestPath(ArrayList<ArrayList<int[]>> adj, int v, int src) {
         int[] distances = new int[v];
         int[] parent = new int[v];
-        Arrays.fill(distances, 234); // Max value for infinity
+        Arrays.fill(distances, 234);
         Arrays.fill(parent, -1);
 
         PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[1] - b[1]);
         distances[src] = 0;
-        pq.add(new int[]{src, 0});//didnt understand
+        pq.add(new int[]{src, 0});
 
         int step = 1;
         while (!pq.isEmpty()) {
-            int[] current = pq.poll();//gets highest priority element
+            int[] current = pq.poll();
             int curNode = current[0];
             int curDist = current[1];
 
@@ -66,7 +66,7 @@ public class Dijkstra {
         printPaths(parent, src);
     }
 
-    // Method to print paths
+
     public void printPaths(int[] parent, int src) {
         System.out.println("\nShortest Paths from source " + src + ":");
         for (int i = 0; i < parent.length; i++) {
@@ -78,14 +78,14 @@ public class Dijkstra {
         }
     }
 
-    // Helper method to print a path
+
     private void printPath(int node, int[] parent) {
         if (node == -1) return;
         printPath(parent[node], parent);
         System.out.print(node + " ");
     }
 
-    // Main method to read input and start the process
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter number of vertices: ");
@@ -105,7 +105,7 @@ public class Dijkstra {
             int dest = sc.nextInt();
             int weight = sc.nextInt();
             adj.get(src).add(new int[]{dest, weight});
-            adj.get(dest).add(new int[]{src, weight});  // For undirected graph
+            adj.get(dest).add(new int[]{src, weight});
         }
 
         System.out.print("Enter the Source Vertex: ");

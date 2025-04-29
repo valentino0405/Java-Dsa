@@ -3,10 +3,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Code7 {
-    static int V; // Number of vertices
-    static int[] color; // Array to store colors assigned to vertices
-    static List<String> solutions; // List to store valid color patterns
-    static int[][] graph; // Adjacency matrix
+    static int V;
+    static int[] color;
+    static List<String> solutions;
+    static int[][] graph;
     static String[] colorNames = {"R", "G", "B", "Y", "O", "P", "C", "W", "B"};
 
     static boolean isSafe(int v, int c) {
@@ -20,7 +20,7 @@ public class Code7 {
 
     static void graphColoring(int v, int m) {
         if (v == V) {
-            // Store the current valid coloring as a string with color names
+
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < V; i++) {
                 sb.append(colorNames[color[i] - 1]).append(" ");
@@ -32,7 +32,7 @@ public class Code7 {
             if (isSafe(v, c)) {
                 color[v] = c;
                 graphColoring(v + 1, m);
-                color[v] = 0; // Backtrack
+                color[v] = 0;
             }
         }
     }

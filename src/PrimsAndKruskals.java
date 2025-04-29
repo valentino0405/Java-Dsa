@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class PrimsAndKruskals {
-    // Union-Find/Disjoint Set data structure
+
     static class DisjointSet {
         int[] parent;
         int[] rank;
@@ -92,13 +92,13 @@ public class PrimsAndKruskals {
             int[] current = pq.poll();
             int curNode = current[0];
 
-            // If already included in MST, skip
+
             if (inMST[curNode]) continue;
 
-            // Mark node as included in MST
+
             inMST[curNode] = true;
 
-            // Add the edge weight to MST total weight (if not the source)
+
             if (parent[curNode] != -1) {
                 totalWeight += distances[curNode];
             }
@@ -107,7 +107,7 @@ public class PrimsAndKruskals {
                 int nextNode = neighbor[0];
                 int weight = neighbor[1];
 
-                // Only update if nextNode is not already in MST
+
                 if (!inMST[nextNode] && weight < distances[nextNode]) {
                     distances[nextNode] = weight;
                     parent[nextNode] = curNode;
@@ -115,7 +115,7 @@ public class PrimsAndKruskals {
                 }
             }
 
-            // Print the table for debugging
+
             System.out.print("\nStep-" + step);
             printTables(distances, parent, v);
             step++;
