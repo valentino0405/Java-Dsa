@@ -12,7 +12,7 @@ public class LCS {
                     dp[i][j] = 0;
                     b[i][j] = ' '; // No direction for the first row/column
                 } else if (x.charAt(i - 1) == y.charAt(j - 1)) { // Match case
-                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                    dp[i][j] = dp[i - 1][j - 1] + 1;            // compare upper and side ways
                     b[i][j] = '↖'; // Diagonal move
                 } else if (dp[i - 1][j] > dp[i][j - 1]) { // Up move
                     dp[i][j] = dp[i - 1][j];
@@ -74,3 +74,15 @@ public class LCS {
         LCS_Print(s1, n, m);
     }
 }
+
+
+/*
+i-1,j-1 diagonal      i-1,j upper
+
+i,j-1 side            i,j
+
+
+ */
+
+
+

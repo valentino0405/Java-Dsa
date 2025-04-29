@@ -66,3 +66,18 @@ public class Code7 {
         }
     }
 }
+
+
+
+/*
+* Initially: sb = ""
+
+Append "R " ➔ sb = "R "
+Append "G " ➔ sb = "R G "
+Append "B " ➔ sb = "R G B "
+Append "R " ➔ sb = "R G B R "
+Append "G " ➔ sb = "R G B R G "
+
+Final sb.toString() ➔ "R G B R G "
+After .trim() ➔ "R G B R G"
+Added to solutions.*/

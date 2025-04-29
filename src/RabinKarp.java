@@ -41,7 +41,8 @@ public class RabinKarp {
 
             // Calculate hash value for next window of text
             if (s < n - m) {
-                t = (d * (t - T.charAt(s) * h) + T.charAt(s + m)) % q;
+                t = (d * (t - T.charAt(s) * h) + T.charAt(s + m)) % q;//New Hash = (Radix * (Old Hash - Leftmost Character Contribution) + New Rightmost Character) mod Prime
+
                 if (t < 0)
                     t += q;
             }
@@ -71,3 +72,27 @@ public class RabinKarp {
         scanner.close();
     }
 }
+
+
+/*
+ 🔥 Quick Example with Your Inputs
+Text T = "ValentinoGomes"
+
+Pattern P = "ntino" (m = 5)
+
+Suppose s = 4:
+
+Window covers "ntino" (text from position 4 to 8).
+
+To slide forward:
+
+Remove T.charAt(4) = 'n'
+
+Add T.charAt(4 + 5) = T.charAt(9) = 'G'
+
+Hash is updated by:
+
+Removing 'n'
+
+Adding 'G'
+*/

@@ -3,34 +3,41 @@ import java.util.Scanner;
 public class MergeQuickSort {
 
     public static void merge(int[] A, int low, int mid, int high, int[] pass) {
-        int h = low, i = low, j = mid + 1;
-        int[] B = new int[A.length];
+        int leftIndex = low;
+        int rightIndex = mid + 1;
+        int mergedIndex = low;
 
-        while (h <= mid && j <= high) {
-            if (A[h] <= A[j]) {
-                B[i] = A[h];
-                h++;
+        int[] merged = new int[A.length];  // Temporary merged array
+
+        // Merge elements from both halves into 'merged' array
+        while (leftIndex <= mid && rightIndex <= high) {
+            if (A[leftIndex] <= A[rightIndex]) {
+                merged[mergedIndex] = A[leftIndex];
+                leftIndex++;
             } else {
-                B[i] = A[j];
-                j++;
+                merged[mergedIndex] = A[rightIndex];
+                rightIndex++;
             }
-            i++;
+            mergedIndex++;
         }
 
-        while (h <= mid) {
-            B[i] = A[h];
-            h++;
-            i++;
+        // Copy remaining elements from Left half (if any)
+        while (leftIndex <= mid) {
+            merged[mergedIndex] = A[leftIndex];
+            leftIndex++;
+            mergedIndex++;
         }
 
-        while (j <= high) {
-            B[i] = A[j];
-            j++;
-            i++;
+        // Copy remaining elements from Right half (if any)
+        while (rightIndex <= high) {
+            merged[mergedIndex] = A[rightIndex];
+            rightIndex++;
+            mergedIndex++;
         }
 
+        // Copy merged content back to original array A
         for (int k = low; k <= high; k++) {
-            A[k] = B[k];
+            A[k] = merged[k];
         }
 
         System.out.print("After merging, pass " + pass[0]++ + ": ");
@@ -77,7 +84,7 @@ public class MergeQuickSort {
     public static void quickSort(int[] A, int lb, int ub, int[] pass) {
         if (lb < ub) {
             int pivot = partition(A, lb, ub, pass);
-            quickSort(A, lb, pivot - 1, pass);
+            quickSort(A, lb, pivot - 1, pass);// from previous ub stops that is returned and that is the place where pivot is placed so that till that index is sorted out so pivot -1 and pivot +1
             quickSort(A, pivot + 1, ub, pass);
         }
     }
@@ -125,3 +132,21 @@ public class MergeQuickSort {
         sc.close();
     }
 }
+
+
+//basically first see down<up eg 0<10 then make 1 st element as pivot and check first condition
+//1 st condition : incoming elements agar pivot yani arr[0] se chota hai toh ....down ++ karte ja and check everytime down<up
+//if 1 st fails then 2 nd condition: arr ka end se shuru kar and check kar ki incoming elements are greater than pivot i.e. arr[0]
+//if yes then up--
+//if that also fails ...do jidar down stopped and jidar up stopped so swap both of it
+//then again check main while loop now down and up eg could be 2 and 10 so yes 2<10
+//continue
+//continue from down and check whether  from 2 the both conditions
+//at one point after these two conditions and swaps
+//point will come where up has crossed down so that means down<up wrong
+//so we swap place  A[lb] = A[up];
+//        A[up] = pivot;
+//ellement at lb i.e. one posititon ahead of dwon in the left direction in down ...i.e. of up
+//element at up place the pivot
+//lb<-up
+//up<-pivot element

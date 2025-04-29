@@ -156,3 +156,23 @@ public class PrimsAndKruskals {
         Prims(adj, v, src);
     }
 }
+
+
+
+
+
+//adj = [
+//    [(3,2), (1,3), (6,6)],  // List for vertex 0
+//    [(0,3), (3,2), (4,1), (2,6)],  // List for vertex 1
+//    [(1,6), (5,1)],  // List for vertex 2
+//    [(0,2), (1,2), (4,3)],  // List for vertex 3
+//    [(1,1), (3,3), (5,4)],  // List for vertex 4
+//    [(2,1), (4,4), (6,2)],  // List for vertex 5
+//    [(0,6), (5,2)]  // List for vertex 6
+//]
+
+
+//pq = [(1, 4, 1), (2, 5, 1), (0, 3, 2), (1, 3, 2), (5, 6, 2), (0, 1, 3), (3, 4, 3), (4, 5, 4), (0, 6, 6), (1, 2, 6)]
+
+
+//yeah so i undertood the adj contains vertex:[(neighbour,weights to reach its neighbour )]  first we (0,0) so that means on first vertex so we check whether we have traversed it or not by doing inMST so it isnt so we add vertex 0 to mst means in real world we have added 0 on paper now in real world what would we have done is seen manually in the qustion graph which are its closest neghbour but in code what we have is adj vertex:[(neighbour,weights to reach its neighbour )] in this format .....so we then take one one neighbours put in for loop and check whther we have traversed them or not .. and also we check whther the distances to reach it ie wieght is less than the distances array ...initially its infinity we have taken as 100 for now ......then by this method in first iteration we get the pq filled up that is we have 3 possobility from source .......then pq sorts itself based on weight a[1]-b[1] right so we poll out the pair having the minimum wieght and then ......use adj to.get(that node which we have polled out ) and we keep on checking ...........the same manner and intialise its parents too ....in further iterations it could happen that we have already in real world added that vertex in graph so no need to add  it again right ........so like wise we keep on doing that

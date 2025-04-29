@@ -72,3 +72,23 @@ public class Insertion_selection {
         sc.close();
     }
 }
+
+
+
+
+//i >= 0: We must stay within bounds of the array.
+//
+//arr[i] > key: If the current element is greater than the key, it means it's out of order. We shift it to the right.
+//
+//🔄 Each iteration:
+//Compares key with arr[i].
+//
+//If arr[i] is greater, shift arr[i] to the right (arr[i + 1] = arr[i]).
+//
+//Decrease i to keep checking earlier elements.
+
+
+
+//MINE:
+//agar i th element is greater than the next element i.e. jth element then ith element ko jth ke place pe daalo by arr[i+1]=arr[i] so both
+//both concecutive positions have ith element itself and then ..... in next ..after while loops ends then put up ....key in ith element place
